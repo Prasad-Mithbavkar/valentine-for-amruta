@@ -11,7 +11,7 @@ body {
     padding: 0;
     background: linear-gradient(135deg, #ff9a9e, #fad0c4);
     font-family: 'Segoe UI', sans-serif;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,23 +24,28 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 30px;
-    padding: 20px;
+    padding: clamp(16px, 4vw, 32px);
+    width: min(92vw, 640px);
+    box-sizing: border-box;
 }
 
 h1 {
     color: white;
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 6vw, 2.7rem);
+    line-height: 1.2;
     margin: 0;
 }
 
 .buttons {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
 }
 
 button {
     padding: 15px 35px;
-    font-size: 18px;
+    font-size: clamp(1rem, 4.5vw, 1.125rem);
     border: none;
     border-radius: 30px;
     cursor: pointer;
@@ -65,8 +70,33 @@ button {
 
 .success {
     display: none;
-    font-size: 2rem;
+    font-size: clamp(1.35rem, 6vw, 2.3rem);
+    padding: 0 16px;
+    max-width: 90vw;
     color: white;
+}
+
+@media (max-width: 480px) {
+    body {
+        align-items: flex-start;
+        padding-top: max(28px, env(safe-area-inset-top));
+    }
+
+    .container {
+        gap: 20px;
+    }
+
+    .buttons {
+        width: 100%;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    button {
+        width: 100%;
+        max-width: 280px;
+        padding: 14px 22px;
+    }
 }
 </style>
 </head>
